@@ -1,0 +1,15 @@
+:root {
+  --Dark-Blue: hsl(209, 23%, 22%);
+  --Very-Dark-Blue-1: hsl(207, 26%, 17%);
+  --Very-Dark-Blue-2: hsl(200, 15%, 8%);
+  --Dark-Gray: hsl(0, 0%, 52%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
+  --primary-font: 'Nunito Sans', sans-serif;
+  --light-weight: 300;
+  --semi-bold: 600;
+  --extra-bold: 800;
+  --font-size-primary: 1.4rem;
+  --font-size-secondary: 1.6rem;
+}
+/*# sourceMappingURL=main.css.map */
