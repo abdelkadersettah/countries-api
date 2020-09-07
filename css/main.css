@@ -12,4 +12,46 @@
   --font-size-primary: 1.4rem;
   --font-size-secondary: 1.6rem;
 }
+
+:root {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  text-decoration: none;
+}
+
+button,
+a,
+a:link,
+a:active {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--primary-font);
+  font-size: var(--font-size-primary);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-size: inherit;
+}
 /*# sourceMappingURL=main.css.map */
