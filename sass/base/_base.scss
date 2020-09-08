@@ -26,6 +26,7 @@ a:active {
   display: inline-block;
   outline: none;
   background-color: transparent;
+  color: inherit;
 }
 html {
   font-size: 62.5%; // 62.5= 10px/16px => 1rem == 10px;
@@ -34,6 +35,7 @@ body {
   font-family: var(--primary-font);
   font-size: var(--font-size-primary);
   line-height: 1.5;
+  color: var(--Very-Dark-Blue-2);
 }
 h1,
 h2,
