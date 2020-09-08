@@ -1,10 +1,10 @@
 :root {
-  --Dark-Blue: hsl(209, 23%, 22%);
-  --Very-Dark-Blue-1: hsl(207, 26%, 17%);
-  --Very-Dark-Blue-2: hsl(200, 15%, 8%);
-  --Dark-Gray: hsl(0, 0%, 52%);
-  --Very-Light-Gray: hsl(0, 0%, 98%);
-  --White: hsl(0, 0%, 100%);
+  --dark-blue: hsl(209, 23%, 22%);
+  --very-dark-blue-1: hsl(207, 26%, 17%);
+  --very-dark-blue-2: hsl(200, 15%, 8%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-Light-gray: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
   --primary-font: 'Nunito Sans', sans-serif;
   --light-weight: 300;
   --semi-bold: 600;
@@ -51,11 +51,15 @@ html {
   font-size: 62.5%;
 }
 
-body {
+.body {
   font-family: var(--primary-font);
   font-size: var(--font-size-primary);
   line-height: 1.5;
-  color: var(--Very-Dark-Blue-2);
+  color: var(--very-dark-blue-2);
+}
+
+.body--dark-mode {
+  color: var(--white);
 }
 
 h1,
@@ -68,12 +72,22 @@ h3 {
   display: flex;
   justify-content: space-between;
   padding: var(--padding-medium) var(--page-padding);
-  box-shadow: 0px -0.15em 0.5em var(--Dark-Gray);
+  box-shadow: 0px -0.15em 0.5em var(--dark-gray);
+  background-color: var(--white);
   z-index: 100;
   position: relative;
 }
 
+.header--dark-mode {
+  background-color: var(--dark-blue);
+}
+
 .main {
-  background-color: var(--Very-Light-Gray);
+  background-color: var(--very-light-gray);
+  height: 50vh;
+}
+
+.main--dark-mode {
+  background-color: var(--very-dark-blue-1);
 }
 /*# sourceMappingURL=main.css.map */
