@@ -19,14 +19,30 @@
     </header>
     <main class="main">
       <section class="input">
-        <label for="search-country" class="fas fa-search input__icon"></label>
-        <input
-          type="search"
-          name="search-country"
-          id=""
-          class="input__search"
-          placeholder="Search for a country..."
-        />
+        <form action="search" class="search">
+          <label for="search-country" class="fas fa-search search__icon"></label>
+          <input
+            type="search"
+            name="search-country"
+            id=""
+            class="search__input"
+            placeholder="Search for a country..."
+          />
+
+        </form>
+        <nav class="dropdown">
+           <button class="dropdown__btn">Main Menu</button>
+            <!-- <div class="dropdown-menu"> -->
+              <ul class="dropdown__menu">
+                <li class="dropdown__list"><a class="dropdown__link" href="/">Africa</a></li>
+                <li class="dropdown__list"><a class="dropdown__link" href="/">America</a></li>
+                <li class="dropdown__list"><a class="dropdown__link" href="/">Asia</a></li>
+                <li class="dropdown__list"><a class="dropdown__link" href="/">Europe</a></li>
+                <li class="dropdown__list"><a class="dropdown__link" href="/">Oceania</a></li>
+              </ul>
+            </div>
+         
+        </nav>
       </section>
     </main>
 
