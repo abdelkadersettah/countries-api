@@ -11,8 +11,9 @@
   }
 }
 .main {
+  margin-top: var(--margin-medium);
+  padding: 0 var(--page-padding);
   background-color: var(--very-light-gray);
-  height: 50vh;
   &--dark-mode {
     background-color: var(--very-dark-blue-1);
   }

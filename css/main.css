@@ -16,6 +16,10 @@
   --padding-medium: 2em;
   --padding-large: 3em;
   --padding-x-large: 4em;
+  --margin-small: 1em;
+  --margin-medium: 2em;
+  --margin-large: 3em;
+  --margin-x-large: 4em;
 }
 
 :root {
@@ -83,11 +87,42 @@ h3 {
 }
 
 .main {
+  margin-top: var(--margin-medium);
+  padding: 0 var(--page-padding);
   background-color: var(--very-light-gray);
-  height: 50vh;
 }
 
 .main--dark-mode {
   background-color: var(--very-dark-blue-1);
+}
+
+.search {
+  position: relative;
+  color: var(--dark-gray);
+  border-radius: 0.3em;
+  box-shadow: 0px -0.15em 0.3em var(--dark-gray);
+}
+
+.search__icon {
+  position: absolute;
+  z-index: 10;
+  left: var(--padding-medium);
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.search__input {
+  color: inherit;
+  display: inline-block;
+  width: 100%;
+  border: none;
+  z-index: 0;
+  padding: var(--padding-small) var(--padding-large);
+}
+
+.search__input::placeholder {
+  color: currentColor;
+  font-size: 1.2rem;
+  font-weight: var(--light-weight);
 }
 /*# sourceMappingURL=main.css.map */
