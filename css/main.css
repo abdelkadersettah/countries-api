@@ -62,10 +62,6 @@ html {
   color: var(--very-dark-blue-2);
 }
 
-.body--dark-mode {
-  color: var(--white);
-}
-
 h1,
 h2,
 h3 {
@@ -82,28 +78,21 @@ h3 {
   position: relative;
 }
 
-.header--dark-mode {
-  background-color: var(--dark-blue);
-}
-
 .main {
   padding: 0 var(--page-padding);
   padding-top: var(--padding-medium);
   background-color: var(--very-Light-gray);
 }
 
-.main--dark-mode {
-  background-color: var(--very-dark-blue-1);
-}
-
 .search {
   position: relative;
-  color: var(--dark-gray);
+  color: inherit;
   border-radius: 0.4em;
 }
 
 .search__icon {
   position: absolute;
+  color: inherit;
   z-index: 10;
   left: var(--padding-medium);
   top: 50%;
@@ -115,6 +104,7 @@ h3 {
   border-radius: 0.4em;
   font-size: var(--font-size-secondary);
   color: inherit;
+  background-color: var(--white);
   display: inline-block;
   width: 100%;
   border: none;
