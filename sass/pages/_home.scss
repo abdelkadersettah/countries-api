@@ -13,4 +13,13 @@
   background-color: var(--very-Light-gray);
 }
 .cards-container {
+  &__items {
+    width: 85%;
+    margin: 0 auto;
+  }
+  &__list {
+    margin-bottom: var(--margin-medium);
+    border-radius: 0.4em;
+    overflow: hidden;
+  }
 }
