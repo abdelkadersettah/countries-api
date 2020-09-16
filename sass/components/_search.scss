@@ -12,11 +12,11 @@
     left: var(--padding-medium);
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: var(--font-size-secondary);
+    font-size: var(--font-size-primary);
   }
   &__input {
     border-radius: 0.4em;
-    font-size: var(--font-size-secondary);
+    font-size: var(--font-size-primary);
     color: inherit;
     color: var(--dark-gray);
     background-color: var(--white);
