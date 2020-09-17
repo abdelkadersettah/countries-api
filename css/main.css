@@ -79,7 +79,7 @@ h3 {
 }
 
 .main {
-  padding: 0 var(--page-padding);
+  padding: var(--padding-large) var(--page-padding);
   padding-top: var(--padding-medium);
   background-color: var(--very-Light-gray);
 }
@@ -87,6 +87,10 @@ h3 {
 .cards-container__items {
   width: 85%;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-gap: var(--page-padding);
 }
 
 .cards-container__list {

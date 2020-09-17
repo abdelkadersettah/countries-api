@@ -8,7 +8,7 @@
   position: relative;
 }
 .main {
-  padding: 0 var(--page-padding);
+  padding: var(--padding-large) var(--page-padding);
   padding-top: var(--padding-medium);
   background-color: var(--very-Light-gray);
 }
@@ -16,6 +16,10 @@
   &__items {
     width: 85%;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-gap: var(--page-padding);
   }
   &__list {
     margin-bottom: var(--margin-medium);
