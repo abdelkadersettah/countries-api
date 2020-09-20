@@ -5,6 +5,10 @@
   --dark-gray: hsl(0, 0%, 52%);
   --very-Light-gray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
+  --background-primary: var(--white);
+  --background-secondary: var(--very-Light-gray);
+  --text-color-primary: var(--very-dark-blue-2);
+  --shadow-color-primary: var(--dark-gray);
   --primary-font: 'Nunito Sans', sans-serif;
   --light-weight: 300;
   --semi-bold: 600;
@@ -59,16 +63,14 @@ html {
   font-family: var(--primary-font);
   font-size: var(--font-size-primary);
   line-height: 1.5;
-  color: var(--very-dark-blue-2);
+  color: var(--text-color-primary);
 }
 
 .body--dark {
-  --dark-blue: hsl(0, 0%, 100%);
-  --very-dark-blue-1: rgb(17, 21, 23);
-  --very-dark-blue-2: hsl(0, 0%, 100%);
-  --dark-gray: rgb(17, 21, 23);
-  --very-Light-gray: hsl(207, 26%, 17%);
-  --white: hsl(209, 23%, 22%);
+  --background-primary: var(--dark-blue);
+  --background-secondary: var(--very-dark-blue-1);
+  --text-color-primary: var(--white);
+  --shadow-color-primary: var(--very-dark-blue-2);
 }
 
 h1,
@@ -81,8 +83,8 @@ h3 {
   display: flex;
   justify-content: space-between;
   padding: var(--padding-medium) var(--page-padding);
-  box-shadow: 0px -0.15em 0.5em var(--dark-gray);
-  background-color: var(--white);
+  box-shadow: 0px -0.15em 0.5em var(--shadow-color-primary);
+  background-color: var(--background-primary);
   z-index: 100;
   position: relative;
 }
@@ -90,7 +92,7 @@ h3 {
 .main {
   padding: var(--padding-large) var(--page-padding);
   padding-top: var(--padding-medium);
-  background-color: var(--very-Light-gray);
+  background-color: var(--background-secondary);
 }
 
 .cards-container__items {
@@ -112,7 +114,7 @@ h3 {
   position: relative;
   color: inherit;
   border-radius: 0.4em;
-  box-shadow: 0px 0em 0.5em var(--dark-gray);
+  box-shadow: 0px 0em 0.5em var(--shadow-color-primary);
 }
 
 .search__icon {
@@ -129,7 +131,7 @@ h3 {
   border-radius: 0.4em;
   font-size: var(--font-size-primary);
   color: inherit;
-  background-color: var(--white);
+  background-color: var(--background-primary);
   display: inline-block;
   width: 100%;
   border: none;
@@ -161,11 +163,12 @@ h3 {
 }
 
 .dropdown:hover .dropdown__btn::after {
-  border-color: transparent transparent var(--dark-blue);
+  border-color: var(--text-color-primary) transparent transparent;
+  top: 50%;
 }
 
 .dropdown__btn {
-  background-color: var(--white);
+  background-color: var(--background-primary);
   color: inherit;
   width: 100%;
   position: relative;
@@ -173,31 +176,29 @@ h3 {
   font-size: var(--font-size-primary);
   padding: var(--padding-small) var(--padding-medium);
   border-radius: 0.4em;
-  box-shadow: 0px 0em 0.5em var(--dark-gray);
+  box-shadow: 0px 0em 0.5em var(--shadow-color-primary);
 }
 
 .dropdown__btn::after {
   position: absolute;
   content: '';
-  top: 50%;
   right: 10%;
   height: 0.85em;
   width: 0.85em;
   border: 0.45em solid;
-  border-color: var(--dark-blue) transparent transparent;
-  transform: translate(-50%, -50%);
-  transition: 0.1s ease-out;
+  border-color: transparent transparent var(--text-color-primary);
+  transition: 0.1s ease-in;
 }
 
 .dropdown__menu {
   display: none;
   position: absolute;
-  background-color: var(--white);
+  background-color: var(--background-primary);
   margin-top: 0.5em;
   width: 100%;
   padding: var(--padding-small) var(--padding-medium);
   border-radius: 0.4em;
-  box-shadow: 0px 0em 0.5em var(--dark-gray);
+  box-shadow: 0px 0em 0.5em var(--shadow-color-primary);
   transition: 0.1s ease-in;
 }
 
@@ -223,7 +224,7 @@ h3 {
 }
 
 .card__body {
-  background-color: var(--white);
+  background-color: var(--background-primary);
   padding: var(--padding-medium);
   padding-bottom: var(--padding-large);
 }

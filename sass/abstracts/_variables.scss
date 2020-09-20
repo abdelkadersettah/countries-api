@@ -6,6 +6,10 @@
   --dark-gray: hsl(0, 0%, 52%); //(Light Mode Input)
   --very-Light-gray: hsl(0, 0%, 98%); //(Light Mode Background)
   --white: hsl(0, 0%, 100%); // (Dark Mode Text & Light Mode Elements)
+  --background-primary: var(--white);
+  --background-secondary: var(--very-Light-gray);
+  --text-color-primary: var(--very-dark-blue-2);
+  --shadow-color-primary: var(--dark-gray);
 
   // fonts family;
   --primary-font: 'Nunito Sans', sans-serif;

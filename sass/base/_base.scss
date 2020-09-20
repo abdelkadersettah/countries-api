@@ -34,14 +34,16 @@ html {
   font-family: var(--primary-font);
   font-size: var(--font-size-primary);
   line-height: 1.5;
-  color: var(--very-dark-blue-2);
+  color: var(--text-color-primary);
   &--dark {
-    --dark-blue: hsl(0, 0%, 100%); //(dark Mode Elements)
-    --very-dark-blue-1: rgb(17, 21, 23); //(dark Mode Background)
-    --very-dark-blue-2: hsl(0, 0%, 100%); //(Light Mode Text)
-    --dark-gray: rgb(17, 21, 23); //(Light Mode Input)
-    --very-Light-gray: hsl(207, 26%, 17%); //(Light Mode Background)
-    --white: hsl(209, 23%, 22%); // (Dark Mode Text & Light Mode Elements)
+    // colors variables for the dark mode :
+    // background color
+    --background-primary: var(--dark-blue);
+    --background-secondary: var(--very-dark-blue-1);
+    // text colors:
+    --text-color-primary: var(--white);
+    // box shadow
+    --shadow-color-primary: var(--very-dark-blue-2);
   }
 }
 h1,

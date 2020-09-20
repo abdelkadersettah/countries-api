@@ -2,15 +2,15 @@
   display: flex;
   justify-content: space-between;
   padding: var(--padding-medium) var(--page-padding);
-  box-shadow: 0px -0.15em 0.5em var(--dark-gray);
-  background-color: var(--white);
+  box-shadow: 0px -0.15em 0.5em var(--shadow-color-primary);
+  background-color: var(--background-primary);
   z-index: 100;
   position: relative;
 }
 .main {
   padding: var(--padding-large) var(--page-padding);
   padding-top: var(--padding-medium);
-  background-color: var(--very-Light-gray);
+  background-color: var(--background-secondary);
 }
 .cards-container {
   &__items {
