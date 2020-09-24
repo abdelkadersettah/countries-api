@@ -1,0 +1,9 @@
+.page {
+  &__home {
+    // for testing
+    display: none;
+  }
+  &__detail {
+    margin-top: var(--margin-small);
+  }
+}

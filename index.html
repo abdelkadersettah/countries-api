@@ -18,20 +18,22 @@
       </button>
     </header>
     <main class="main">
-      <section class="input">
-        <form action="search" class="search">
-          <label for="search-country" class="fas fa-search search__icon"></label>
-          <input
+      <section class="page page__home page--active" id="home">
+        
+        <article class="input">
+          <form action="search" class="search">
+            <label for="search-country" class="fas fa-search search__icon"></label>
+            <input
             type="search"
             name="search-country"
             id=""
             class="search__input"
             placeholder="Search for a country..."
-          />
-
-        </form>
-        <nav class="dropdown">
-           <button class="dropdown__btn">Filter by Region</button>
+            />
+            
+          </form>
+          <nav class="dropdown">
+            <button class="dropdown__btn">Filter by Region</button>
             <!-- <div class="dropdown-menu"> -->
               <ul class="dropdown__menu">
                 <li class="dropdown__list"><a class="dropdown__link" href="/">Africa</a></li>
@@ -43,14 +45,14 @@
             </div>
          
         </nav>
-           </section>
-            <section class="cards-container">
+      </article>
+            <article class="cards-container">
               <ul class="cards-container__items">
                 <li class="cards-container__list">
                   <a href="" class="card">
                     <figure class="card__figure">
                         <img src="https://satyr.io/400x200?text=card__image" alt="" class="card__image">
-                    </figure>
+                      </figure>
                       <div class="card__body">
                         <h2 class="card__title">BRASIL</h2>
                         <ul class="card__detail">
@@ -60,23 +62,23 @@
                          
                         </ul>
                       </div>
-                  </a>
-                </li>
-                <li class="cards-container__list">
-                  <a href="" class="card">
-                    <figure class="card__figure">
+                    </a>
+                  </li>
+                  <li class="cards-container__list">
+                    <a href="" class="card">
+                      <figure class="card__figure">
                         <img src="https://satyr.io/400x200?text=card__image" alt="" class="card__image">
                     </figure>
-                      <div class="card__body">
+                    <div class="card__body">
                         <h2 class="card__title">BRASIL</h2>
                         <ul class="card__detail">
                           <li><h3 class="card__subtitle">helloo: <span class="card__subtitle--content">121212121</span></h3></li>
                           <li><h3 class="card__subtitle">helloo: <span class="card__subtitle--content">121212121</span></h3></li>
                           <li><h3 class="card__subtitle">helloo: <span class="card__subtitle--content">121212121</span></h3></li>
-                         
+                          
                         </ul>
                       </div>
-                  </a>
+                    </a>
                 </li>
                 <li class="cards-container__list">
                   <a href="" class="card">
@@ -96,15 +98,57 @@
                 </li>
  
               </ul>
-            </section>
+            </article>
             
+          </section>
+          <section class="page page__detail" id="detail">
+            <button class="btn btn__back">
+              <i class="fas fa-arrow-left btn__icon"></i>
+              Back</button>
+            <article class="cards-container cards-container--detail">
+              <ul class="cards-container__items cards-container__items--detail">
+                <li class="cards-container__list cards-container__list--detail">
+                  <a href="" class="card card--detail">
+                    <figure class="card__figure card__figure--detail">
+                        <img src="https://satyr.io/400x200?text=card__image" alt="" class="card__image">
+                      </figure>
+                      <div class="card__body card__body--detail">
+                        <h2 class="card__title">BRASIL</h2>
+                        <ul class="card__detail">
+                          <ul class="card__detail--first">
+                            <li><h3 class="card__subtitle">Native Name: <span class="card__subtitle--content">121212121</span></h3></li>
+                          <li><h3 class="card__subtitle">Population: <span class="card__subtitle--content">121212121</span></h3></li>
+                          <li><h3 class="card__subtitle">Region: <span class="card__subtitle--content">121212121</span></h3></li>
+                          <li><h3 class="card__subtitle">Sub Region: <span class="card__subtitle--content">121212121</span></h3></li>
+                          <li><h3 class="card__subtitle">Capital: <span class="card__subtitle--content">121212121</span></h3></li>
+                          </ul>
+                          <ul class="card__detail--second">
+                            <li><h3 class="card__subtitle">Top Level Domain: <span class="card__subtitle--content">121212121</span></h3></li>
+                          <li><h3 class="card__subtitle">Currencies: <span class="card__subtitle--content">121212121</span></h3></li>
+                          <li><h3 class="card__subtitle">Dutch, French, German: <span class="card__subtitle--content">121212121</span></h3></li>
+                          </ul>
+                             </ul>
+                        <nav class="card-footer">
+                          <h2 class="card__title">Border Countries:</h2>
+                          <ul class="card-footer__content">
 
-    </main>
+
+                            <li class="card-footer__item" ><button class="btn card__btn"> France</button></li>
+                            <li class="card-footer__item" ><button class="btn card__btn"> France</button></li>
+                            <li class="card-footer__item"><button class="btn card__btn"> France</button></li>
+                          </ul>
+                        </nav>
+                      </div>
+                    </a>
+                  </li>
+          </section>
+
+          </main>
 
     <script
       src="https://kit.fontawesome.com/646c52264b.js"
       crossorigin="anonymous"
-    ></script>
+      ></script>
     <script src="./script/model.js"></script>
     <script src="./script/ui.js"></script>
     <script src="./script/app.js"></script>
