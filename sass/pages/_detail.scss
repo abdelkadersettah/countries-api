@@ -6,4 +6,7 @@
   &__detail {
     margin-top: var(--margin-small);
   }
+  &--active {
+    display: block;
+  }
 }

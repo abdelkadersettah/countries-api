@@ -1,6 +1,7 @@
-// import { DarkMode } from './script/ui.js';
+const darkMode = Object.create(DarkMode);
+
 const App = {
-  activeEvent: function () {
+  init: function () {
     window.onload = (function () {
       darkMode.addRemoveDarkMode();
     })();
@@ -8,4 +9,4 @@ const App = {
 };
 
 const countriesApp = Object.create(App);
-countriesApp.activeEvent();
+countriesApp.init();
