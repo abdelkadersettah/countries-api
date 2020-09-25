@@ -1,9 +1,11 @@
 const darkMode = Object.create(DarkMode);
+const countryDetail = Object.create(CountryDetail);
 
 const App = {
   init: function () {
     window.onload = (function () {
-      darkMode.addRemoveDarkMode();
+      darkMode.init();
+      countryDetail.init();
     })();
   },
 };
