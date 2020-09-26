@@ -1,25 +1,13 @@
-//  object for dark-mode
-const DarkMode = {
-  // get body eleme,t
-  body: document.querySelector('.body'),
-  // get dark button element
-  darkBtn: document.querySelector('.btn__dark'),
-  // initialization function add and remove dark mode
-  init: function () {
-    this.darkBtn.addEventListener('click', this.addRemoveDarkMode.bind(this));
-  },
-  // event handler function
-  addRemoveDarkMode: function (e) {
-    e.preventDefault();
-    this.body.classList.toggle('body--dark');
-  },
-};
 // object for country detail
-const CountryDetail = {
+const UI = {
   // assign property for pages and cards and back button element
   pages: document.querySelectorAll('.page'),
   cards: document.querySelectorAll('.card'),
   backBtn: document.querySelector('.btn__back'),
+  // get body element
+  body: document.querySelector('.body'),
+  // get dark button element
+  darkBtn: document.querySelector('.btn__dark'),
   // initialization function responsible for fire all event handler
   init: function () {
     // add home hash for page location when the home page load
@@ -36,6 +24,9 @@ const CountryDetail = {
     // when user click on back or previous
     // button on browser
     window.addEventListener('popstate', this.poppIn.bind(this));
+
+    // add and remove dark mode
+    this.darkBtn.addEventListener('click', this.darkMode.bind(this));
   },
   nav: function (e) {
     const detailPage = document.getElementById('detail');
@@ -77,5 +68,11 @@ const CountryDetail = {
       HomePage.classList.add('page--active');
       detailPage.classList.remove('page--active');
     }
+  },
+  //  object for dark-mode
+  darkMode: function (e) {
+    // event handler function
+    e.preventDefault();
+    this.body.classList.toggle('body--dark');
   },
 };
