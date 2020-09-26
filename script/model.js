@@ -1,5 +1,8 @@
 const CountriesData = {
-  url: { all: 'https://restcountries.eu/rest/v2/all' },
+  url: {
+    all: 'https://restcountries.eu/rest/v2/all',
+    name: 'https://restcountries.eu/rest/v2/name/',
+  },
   init: function () {},
   getData: async function (url) {
     // get countries Data API using XMLHttpRequest
@@ -21,8 +24,3 @@ const CountriesData = {
     // return data.json();
   },
 };
-let country = Object.create(CountriesData);
-country
-  .getData(country.url.all)
-  .then((response) => console.log(JSON.parse(response)))
-  .catch((err) => console.log(err));

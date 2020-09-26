@@ -2,19 +2,28 @@
 const UI = {
   // assign property for pages and cards and back button element
   pages: document.querySelectorAll('.page'),
-  cards: document.querySelectorAll('.card'),
   backBtn: document.querySelector('.btn__back'),
+  countryDetail: '',
+  // cards container
+  cardsContainer: document.querySelector('.cards-container__items'),
+  cardsContainerDetail: document.querySelector(
+    '.cards-container__items--detail'
+  ),
   // get body element
   body: document.querySelector('.body'),
   // get dark button element
   darkBtn: document.querySelector('.btn__dark'),
   // initialization function responsible for fire all event handler
   init: function () {
+    const cards = document.querySelectorAll('.card');
+    console.log(cards);
     // add home hash for page location when the home page load
     history.pushState({}, 'home', '#home');
     // add event to cards when user click
     // on card the detail page open
-    this.cards.forEach((card) => {
+    cards.forEach((card) => {
+      console.log(card);
+
       card.addEventListener('click', this.nav.bind(this));
     });
     // add event to back button
@@ -30,10 +39,10 @@ const UI = {
   },
   nav: function (e) {
     const detailPage = document.getElementById('detail');
-    e.preventDefault();
     if (detailPage.classList.contains('page--active')) {
       return;
     } else {
+      e.preventDefault();
       // get class for clicked card;
       let elementClass = e.target.parentElement;
       // loop on clicked element to get
@@ -46,6 +55,7 @@ const UI = {
       // push hasn name on page link
       history.pushState({}, `${hash}`, `#${hash}`);
       this.pages.forEach((page) => page.classList.toggle('page--active'));
+      this.countryDetail = hash;
     }
   },
   // callback function for back button
@@ -74,5 +84,126 @@ const UI = {
     // event handler function
     e.preventDefault();
     this.body.classList.toggle('body--dark');
+  },
+  renderCountries: function (data) {
+    data = data[0];
+    this.cardsContainer.innerHTML = `
+    <a href="" class="card" data-target="${data.name}">
+                    <li class="cards-container__list">
+                        <figure class="card__figure">
+                            <img src="${data.flag}" alt="${
+      data.flag
+    } flag" class="card__image">
+                          </figure>
+                          <div class="card__body">
+                            <h2 class="card__title">${data.name}</h2>
+                            <ul class="card__detail">
+                              <li><h3 class="card__subtitle">Population: <span class="card__subtitle--content">${new Intl.NumberFormat(
+                                'de-DE'
+                              ).format(data.population)}</span></h3></li>
+                              <li><h3 class="card__subtitle">Region: <span class="card__subtitle--content">${
+                                data.region
+                              }</span></h3></li>
+                              <li><h3 class="card__subtitle">Capital: <span class="card__subtitle--content">${
+                                data.capital
+                              }</span></h3></li>
+                             
+                            </ul>
+                          </div>
+                        </li>
+                      </a>
+    
+    `;
+
+    //     data.forEach((country) => {
+    //       html = `
+    // <a href="" class="card" data-target="${country.name}">
+    //                 <li class="cards-container__list">
+    //                     <figure class="card__figure">
+    //                         <img src="${country.flag}" alt="${
+    //         country.flag
+    //       } flag" class="card__image">
+    //                       </figure>
+    //                       <div class="card__body">
+    //                         <h2 class="card__title">${country.name}</h2>
+    //                         <ul class="card__detail">
+    //                           <li><h3 class="card__subtitle">Population: <span class="card__subtitle--content">${new Intl.NumberFormat(
+    //                             'de-DE'
+    //                           ).format(country.population)}</span></h3></li>
+    //                           <li><h3 class="card__subtitle">Region: <span class="card__subtitle--content">${
+    //                             country.region
+    //                           }</span></h3></li>
+    //                           <li><h3 class="card__subtitle">Capital: <span class="card__subtitle--content">${
+    //                             country.capital
+    //                           }</span></h3></li>
+
+    //                         </ul>
+    //                       </div>
+    //                     </li>
+    //                   </a>
+
+    // `;
+    //       this.cardsContainer.innerHTML += html;
+    //     });
+  },
+  renderCountryDetail: function (country) {
+    country = country[0];
+    let html = `
+  <a href="" class="card" data-target="${country.name}">
+      <li class="cards-container__list cards-container__list--detail">
+        <figure class="card__figure card__figure--detail">
+            <img src="${country.flag}" alt="${
+      country.name
+    } flag" class="card__image">
+          </figure>
+          <div class="card__body card__body--detail">
+            <h2 class="card__title">france</h2>
+            <ul class="card__detail">
+              <ul class="card__detail--first">
+                <li><h3 class="card__subtitle">Native Name: <span class="card__subtitle--content">${
+                  country.nativeName
+                }</span></h3></li>
+              <li><h3 class="card__subtitle">Population: <span class="card__subtitle--content">${new Intl.NumberFormat(
+                'de-DE'
+              ).format(country.population)}</span></h3></li>
+              <li><h3 class="card__subtitle">Region: <span class="card__subtitle--content">${
+                country.region
+              }</span></h3></li>
+              <li><h3 class="card__subtitle">Sub Region: <span class="card__subtitle--content">${
+                country.subregion
+              }</span></h3></li>
+              <li><h3 class="card__subtitle">Capital: <span class="card__subtitle--content">${
+                country.capital
+              }</span></h3></li>
+              </ul>
+              <ul class="card__detail--second">
+                <li><h3 class="card__subtitle">Top Level Domain: <span class="card__subtitle--content">${
+                  country.topLevelDomain
+                }</span></h3></li>
+              <li><h3 class="card__subtitle">Currencies: <span class="card__subtitle--content">${country.currencies
+                .map((currency) => currency.name)
+                .join(', ')}</span></h3></li>
+              <li><h3 class="card__subtitle">Languages: <span class="card__subtitle--content">${country.languages
+                .map((language) => language.name)
+                .join(', ')}</span></h3></li>
+              </ul>
+                 </ul>
+            <nav class="card-footer">
+              <h2 class="card__title">Border Countries:</h2>
+              <ul class="card-footer__content">
+              ${(function () {
+                let html = '';
+                country.borders.forEach((country) => {
+                  html += `<li class="card-footer__item" ><button class="btn card__btn"> ${country}</button></li>`;
+                });
+                return html;
+              })()}
+                          </ul>
+            </nav>
+          </div>
+        </li>
+      </a>
+  `;
+    this.cardsContainerDetail.innerHTML = html;
   },
 };
