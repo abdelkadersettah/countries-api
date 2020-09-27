@@ -13,6 +13,14 @@ const App = {
       })
 
       .catch((err) => console.log(err));
+    ui.cardsContainer.addEventListener('click', (e) => {
+      if (location.hash !== '#home') {
+        country.getData(country.url.name + ui.countryDetail).then((data) => {
+          console.log(JSON.parse(data));
+          ui.renderCountryDetail(JSON.parse(data));
+        });
+      }
+    });
   },
 };
 
