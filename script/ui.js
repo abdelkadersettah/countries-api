@@ -22,7 +22,7 @@ const UI = {
     // add event to cards when user click
     // on card the detail page open
     cards.forEach((card) => {
-      card.addEventListener('click', this.nav.bind(this));
+      //  card.addEventListener('click', this.nav.bind(this));
     });
     // add event to back button
     // when the user click it back to home page
@@ -35,20 +35,16 @@ const UI = {
     // add and remove dark mode
     this.darkBtn.addEventListener('click', this.darkMode.bind(this));
   },
-  nav: function (e) {
+  nav: function (elementClass) {
     const detailPage = document.getElementById('detail');
     if (detailPage.classList.contains('page--active')) {
       return;
     } else {
-      e.preventDefault();
       // get class for clicked card;
-      let elementClass = e.target.parentElement;
       // loop on clicked element to get
       // parent attribute DATA-target
       // to get country name
-      while (elementClass.className !== 'card') {
-        elementClass = elementClass.parentElement;
-      }
+
       let hash = elementClass.getAttribute('data-target');
       // push hasn name on page link
       history.pushState({}, `${hash}`, `#${hash}`);

@@ -14,11 +14,22 @@ const App = {
 
       .catch((err) => console.log(err));
     ui.cardsContainer.addEventListener('click', (e) => {
+      e.preventDefault();
+      let elementClass = e.target.parentElement;
+      // loop on clicked element to get
+      // parent attribute DATA-target
+      // to get country name
+      while (elementClass.className !== 'card') {
+        elementClass = elementClass.parentElement;
+      }
+      if (elementClass.className.includes('card')) {
+        ui.nav(elementClass);
+      }
+      country.getData(country.url.name + ui.countryDetail).then((data) => {
+        console.log(JSON.parse(data));
+        ui.renderCountryDetail(JSON.parse(data));
+      });
       if (location.hash !== '#home') {
-        country.getData(country.url.name + ui.countryDetail).then((data) => {
-          console.log(JSON.parse(data));
-          ui.renderCountryDetail(JSON.parse(data));
-        });
       }
     });
   },
