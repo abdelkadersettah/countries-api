@@ -1,17 +1,17 @@
 const ui = Object.create(UI);
-let country = Object.create(CountriesData);
+let countriesData = Object.create(Data);
 
 const App = {
   init: function () {
-    country
-      .getData(country.url.all)
+    countriesData
+      .getData(countriesData.url)
       .then((data) => {
-        ui.renderCountries(JSON.parse(data));
+        countriesData.api = JSON.parse(data);
+        ui.renderCountries(countriesData.api);
       })
       .then(() => {
         ui.init();
       })
-
       .catch((err) => console.log(err));
     ui.cardsContainer.addEventListener('click', (e) => {
       e.preventDefault();
@@ -25,10 +25,11 @@ const App = {
       if (elementClass.className.includes('card')) {
         ui.nav(elementClass);
       }
-      country.getData(country.url.name + ui.countryDetail).then((data) => {
-        console.log(JSON.parse(data));
-        ui.renderCountryDetail(JSON.parse(data));
-      });
+      let country = countriesData.api.filter(
+        (country) => country.name == elementClass.getAttribute('data-target')
+      );
+      console.log(country);
+      ui.renderCountryDetail(country);
       if (location.hash !== '#home') {
       }
     });

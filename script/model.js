@@ -1,8 +1,6 @@
-const CountriesData = {
-  url: {
-    all: 'https://restcountries.eu/rest/v2/all',
-    name: 'https://restcountries.eu/rest/v2/name/',
-  },
+const Data = {
+  url: 'https://restcountries.eu/rest/v2/all',
+  api: null,
   init: function () {},
   getData: async function (url) {
     // get countries Data API using XMLHttpRequest

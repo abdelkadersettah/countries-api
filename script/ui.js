@@ -80,8 +80,9 @@ const UI = {
     this.body.classList.toggle('body--dark');
   },
   renderCountries: function (data) {
+    let html = '';
     data.forEach((country) => {
-      this.cardsContainer.innerHTML += `
+      html += `
     <a href="" class="card" data-target="${country.name}">
                     <li class="cards-container__list">
                         <figure class="card__figure">
@@ -109,10 +110,12 @@ const UI = {
 
     `;
     });
+    this.cardsContainer.innerHTML += html;
   },
   renderCountryDetail: function (country) {
     country = country[0];
-    this.cardsContainerDetail.innerHTML = `
+    let html = '';
+    html += `
   <a href="" class="card" data-target="${country.name}">
       <li class="cards-container__list cards-container__list--detail">
         <figure class="card__figure card__figure--detail">
@@ -174,5 +177,6 @@ const UI = {
         </li>
       </a>
   `;
+    this.cardsContainerDetail.innerHTML += html;
   },
 };
