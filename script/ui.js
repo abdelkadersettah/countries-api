@@ -120,6 +120,7 @@ const UI = {
     );
     clickedCountry = clickedCountry[0];
     let html = '';
+    this.cardsContainerDetail.innerHTML = '';
     html += `
   <a href="" class="card" data-target="${clickedCountry.name}">
       <li class="cards-container__list cards-container__list--detail">
