@@ -3,6 +3,8 @@ const UI = {
   // assign property for pages and cards and back button element
   pages: document.querySelectorAll('.page'),
   backBtn: document.querySelector('.btn__back'),
+  searchInput: document.querySelector('.search__input'),
+  // countryDetail using it for hash name
   countryDetail: '',
   // cards container
   cardsContainer: document.querySelector('.cards-container__items'),
@@ -16,7 +18,6 @@ const UI = {
   // initialization function responsible for fire all event handler
   init: function () {
     const cards = document.querySelectorAll('.card');
-    console.log(cards);
     // add home hash for page location when the home page load
     history.pushState({}, 'home', '#home');
     // add event to cards when user click
@@ -81,6 +82,7 @@ const UI = {
   },
   renderCountries: function (data) {
     let html = '';
+    this.cardsContainer.innerHTML = '';
     data.forEach((country) => {
       html += `
     <a href="" class="card" data-target="${country.name}">
@@ -112,45 +114,48 @@ const UI = {
     });
     this.cardsContainer.innerHTML += html;
   },
-  renderCountryDetail: function (country) {
-    country = country[0];
+  renderCountryDetail: function (countries, clickedCountry) {
+    clickedCountry = countries.filter(
+      (country) => country.name == clickedCountry
+    );
+    clickedCountry = clickedCountry[0];
     let html = '';
     html += `
-  <a href="" class="card" data-target="${country.name}">
+  <a href="" class="card" data-target="${clickedCountry.name}">
       <li class="cards-container__list cards-container__list--detail">
         <figure class="card__figure card__figure--detail">
-            <img src="${country.flag}" alt="${
-      country.name
+            <img src="${clickedCountry.flag}" alt="${
+      clickedCountry.name
     } flag" class="card__image">
           </figure>
           <div class="card__body card__body--detail">
-            <h2 class="card__title">${country.name} </h2>
+            <h2 class="card__title">${clickedCountry.name} </h2>
             <ul class="card__detail">
               <ul class="card__detail--first">
                 <li><h3 class="card__subtitle">Native Name: <span class="card__subtitle--content">${
-                  country.nativeName
+                  clickedCountry.nativeName
                 }</span></h3></li>
               <li><h3 class="card__subtitle">Population: <span class="card__subtitle--content">${new Intl.NumberFormat(
                 'de-DE'
-              ).format(country.population)}</span></h3></li>
+              ).format(clickedCountry.population)}</span></h3></li>
               <li><h3 class="card__subtitle">Region: <span class="card__subtitle--content">${
-                country.region
+                clickedCountry.region
               }</span></h3></li>
               <li><h3 class="card__subtitle">Sub Region: <span class="card__subtitle--content">${
-                country.subregion
+                clickedCountry.subregion
               }</span></h3></li>
               <li><h3 class="card__subtitle">Capital: <span class="card__subtitle--content">${
-                country.capital
+                clickedCountry.capital
               }</span></h3></li>
               </ul>
               <ul class="card__detail--second">
                 <li><h3 class="card__subtitle">Top Level Domain: <span class="card__subtitle--content">${
-                  country.topLevelDomain
+                  clickedCountry.topLevelDomain
                 }</span></h3></li>
-              <li><h3 class="card__subtitle">Currencies: <span class="card__subtitle--content">${country.currencies
+              <li><h3 class="card__subtitle">Currencies: <span class="card__subtitle--content">${clickedCountry.currencies
                 .map((currency) => currency.name)
                 .join(', ')}</span></h3></li>
-              <li><h3 class="card__subtitle">Languages: <span class="card__subtitle--content">${country.languages
+              <li><h3 class="card__subtitle">Languages: <span class="card__subtitle--content">${clickedCountry.languages
                 .map((language) => language.name)
                 .join(', ')}</span></h3></li>
               </ul>
@@ -160,12 +165,24 @@ const UI = {
               <ul class="card-footer__content">
               ${(function () {
                 let html = '';
-                if (country.borders.length) {
-                  country.borders.forEach((country) => {
-                    html += `<li class="card-footer__item" ><button class="btn card__btn"> ${country}</button></li>`;
+                if (clickedCountry.borders.length) {
+                  let bordersArray = clickedCountry.borders;
+                  let result = [];
+
+                  //alpha3Code
+
+                  bordersArray.forEach((elem) => {
+                    result.push(
+                      ...countries.filter((a) => a.alpha3Code === elem)
+                    );
                   });
+                  result
+                    .map((country) => country.name)
+                    .forEach((country) => {
+                      html += `<li class="card-footer__item" ><button class="btn card__btn"> ${country}</button></li>`;
+                    });
                 } else {
-                  console.log(country.borders);
+                  console.log(clickedCountry.borders);
                   html += `<li class="card-footer__item" >//</li>`;
                 }
 
@@ -178,5 +195,11 @@ const UI = {
       </a>
   `;
     this.cardsContainerDetail.innerHTML += html;
+  },
+  searchForCountry: function (e, text) {
+    e.preventDefault();
+    text = text.trim();
+    return text;
+    // this.renderCountries(text);
   },
 };

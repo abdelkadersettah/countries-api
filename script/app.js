@@ -17,19 +17,29 @@ const App = {
       let elementClass = e.target.parentElement;
       // loop on clicked element to get
       // parent attribute DATA-target
-      // to get country name
+      // to get clicked country name
       while (elementClass.className !== 'card') {
         elementClass = elementClass.parentElement;
       }
       if (elementClass.className.includes('card')) {
         ui.nav(elementClass);
       }
-      let country = countriesData.api.filter(
-        (country) => country.name == elementClass.getAttribute('data-target')
-      );
-      console.log(country);
-      ui.renderCountryDetail(country);
+      let clickedCountry = elementClass.getAttribute('data-target');
+
+      ui.renderCountryDetail(countriesData.api, clickedCountry);
       if (location.hash !== '#home') {
+      }
+    });
+    ui.searchInput.addEventListener('input', (e) => {
+      let searchText, searchedCountry;
+      searchText = ui.searchForCountry(e, ui.searchInput.value);
+      if (!searchText) {
+        ui.renderCountries(countriesData.api);
+      } else {
+        searchedCountry = countriesData.api.filter((country) =>
+          country.name.toUpperCase().includes(searchText.toUpperCase())
+        );
+        ui.renderCountries(searchedCountry);
       }
     });
   },
