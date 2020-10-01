@@ -115,11 +115,15 @@ const UI = {
     this.cardsContainer.innerHTML += html;
   },
   renderCountryDetail: function (countries, clickedCountry) {
+    // get countries array and filter
+    // to get clicked one
     clickedCountry = countries.filter(
       (country) => country.name == clickedCountry
     );
+    // get array element of index 0
     clickedCountry = clickedCountry[0];
     let html = '';
+    // to delete html of previous selected country
     this.cardsContainerDetail.innerHTML = '';
     html += `
   <a href="" class="card" data-target="${clickedCountry.name}">
@@ -164,19 +168,25 @@ const UI = {
             <nav class="card-footer">
               <h2 class="card__title">Border Countries:</h2>
               <ul class="card-footer__content">
+              
               ${(function () {
+                // this IIFE responsible for rendering
+                // borders of detail country
                 let html = '';
+                // check if country have borders
                 if (clickedCountry.borders.length) {
+                  // get borders Array and assign it with new variable
                   let bordersArray = clickedCountry.borders;
                   let result = [];
-
-                  //alpha3Code
-
+                  // for each borders country we got the alpha3code
+                  // and filter all countries by alpha code
+                  // to get there name
                   bordersArray.forEach((elem) => {
                     result.push(
                       ...countries.filter((a) => a.alpha3Code === elem)
                     );
                   });
+                  // push result in result array and render it on html
                   result
                     .map((country) => country.name)
                     .forEach((country) => {
@@ -186,10 +196,9 @@ const UI = {
                   console.log(clickedCountry.borders);
                   html += `<li class="card-footer__item" >//</li>`;
                 }
-
                 return html;
               })()}
-                          </ul>
+              </ul>
             </nav>
           </div>
         </li>
@@ -197,10 +206,21 @@ const UI = {
   `;
     this.cardsContainerDetail.innerHTML += html;
   },
-  searchForCountry: function (e, text) {
-    e.preventDefault();
-    text = text.trim();
-    return text;
-    // this.renderCountries(text);
+  // function responsable for search a country
+  searchForCountry: function (countries, searchText) {
+    // remove empty space on text input
+    searchText = searchText.trim();
+    // check if search input empty nothing happen
+    if (!searchText) {
+      return;
+      // else we filter countries array
+      // and search for match
+      // and after that we render the result
+    } else {
+      let searchedCountries = countries.filter((country) =>
+        country.name.toUpperCase().includes(searchText.toUpperCase())
+      );
+      this.renderCountries(searchedCountries);
+    }
   },
 };
