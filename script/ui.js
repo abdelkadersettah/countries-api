@@ -193,10 +193,11 @@ const UI = {
                   result
                     .map((country) => country.name)
                     .forEach((country) => {
-                      html += `<li class="card-footer__item" ><button class="btn card__btn"> ${country}</button></li>`;
+                      html += `<li class="card-footer__item" ><button class="btn card__btn"> ${country
+                        .split('(')[0]
+                        .trim()}</button></li>`;
                     });
                 } else {
-                  console.log(clickedCountry.borders);
                   html += `<li class="card-footer__item" >//</li>`;
                 }
                 return html;
