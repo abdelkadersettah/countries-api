@@ -42,6 +42,14 @@ const App = {
       // call searchForCountry to render result
       ui.searchForCountry(countriesData.api, text);
     });
+
+    ui.dropDownMenu.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (e.target.className.includes('dropdown__link')) {
+        //console.log(e.target);
+        ui.filterByRegion(e.target, countriesData.api);
+      }
+    });
   },
 };
 

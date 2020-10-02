@@ -11,6 +11,9 @@ const UI = {
   cardsContainerDetail: document.querySelector(
     '.cards-container__items--detail'
   ),
+  dropDownLink: document.querySelectorAll('.dropdown__link'),
+  dropDownMenu: document.querySelector('.dropdown__menu'),
+
   // get body element
   body: document.querySelector('.body'),
   // get dark button element
@@ -221,6 +224,29 @@ const UI = {
         country.name.toUpperCase().includes(searchText.toUpperCase())
       );
       this.renderCountries(searchedCountries);
+    }
+  },
+  filterByRegion: function (selectedRegion, countriesData) {
+    selectedRegion.classList.toggle('dropdown__link--active');
+    if (
+      Array.from(this.dropDownLink).filter((link) =>
+        link.classList.contains('dropdown__link--active')
+      ).length === 0
+    ) {
+      this.renderCountries(countriesData);
+    } else {
+      this.dropDownLink.forEach((link) => {
+        if (selectedRegion === link) {
+          return;
+        } else {
+          link.classList.remove('dropdown__link--active');
+        }
+      });
+
+      let result = countriesData.filter(
+        (country) => country.region === selectedRegion.textContent
+      );
+      this.renderCountries(result);
     }
   },
 };

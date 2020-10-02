@@ -249,8 +249,16 @@ h3 {
   margin-bottom: 0.5em;
 }
 
-.dropdown__link {
+.dropdown__link, .dropdown__link:active, .dropdown__link:link {
+  display: flex;
   font-weight: var(--semi-bold);
+  justify-content: space-between;
+}
+
+.dropdown__link--active:after {
+  content: '\2713';
+  color: var(--text-color-primary);
+  font-size: inherit;
 }
 
 .card__figure {

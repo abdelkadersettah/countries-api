@@ -52,7 +52,18 @@
       margin-bottom: 0.5em;
     }
   }
-  &__link {
+  &__link,
+  &__link:active,
+  &__link:link {
+    display: flex;
     font-weight: var(--semi-bold);
+    justify-content: space-between;
+  }
+  &__link {
+    &--active:after {
+      content: '\2713';
+      color: var(--text-color-primary);
+      font-size: inherit;
+    }
   }
 }
