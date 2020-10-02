@@ -60,6 +60,9 @@
     justify-content: space-between;
   }
   &__link {
+    &--active {
+      box-shadow: 0em 0.4em 0.4em -0.4em var(--shadow-color-primary);
+    }
     &--active:after {
       content: '\2713';
       color: var(--text-color-primary);
