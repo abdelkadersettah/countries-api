@@ -88,8 +88,8 @@ const UI = {
     this.cardsContainer.innerHTML = '';
     data.forEach((country) => {
       html += `
+      <li class="cards-container__list">
     <a href="" class="card" data-target="${country.name}">
-                    <li class="cards-container__list">
                         <figure class="card__figure">
                             <img src="${country.flag}" alt="${
         country.flag
@@ -110,8 +110,8 @@ const UI = {
 
                             </ul>
                           </div>
-                        </li>
-                      </a>
+                          </a>
+                          </li>
 
     `;
     });
@@ -129,8 +129,8 @@ const UI = {
     // to delete html of previous selected country
     this.cardsContainerDetail.innerHTML = '';
     html += `
-  <a href="" class="card" data-target="${clickedCountry.name}">
-      <li class="cards-container__list cards-container__list--detail">
+    <li class="cards-container__list cards-container__list--detail">
+  <div href="" class="card" data-target="${clickedCountry.name}">
         <figure class="card__figure card__figure--detail">
             <img src="${clickedCountry.flag}" alt="${
       clickedCountry.name
@@ -193,9 +193,9 @@ const UI = {
                   result
                     .map((country) => country.name)
                     .forEach((country) => {
-                      html += `<li class="card-footer__item" ><button class="btn card__btn"> ${country
+                      html += `<li class="card-footer__item btn" >${country
                         .split('(')[0]
-                        .trim()}</button></li>`;
+                        .trim()}</li>`;
                     });
                 } else {
                   html += `<li class="card-footer__item" >//</li>`;
@@ -205,8 +205,8 @@ const UI = {
               </ul>
             </nav>
           </div>
-        </li>
-      </a>
+          </div>
+          </li>
   `;
     this.cardsContainerDetail.innerHTML += html;
   },

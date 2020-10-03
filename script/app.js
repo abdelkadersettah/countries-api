@@ -50,6 +50,11 @@ const App = {
         ui.filterByRegion(e.target, countriesData.api);
       }
     });
+    // for borders clicks
+    let detailSection = document.getElementById('detail');
+    detailSection.addEventListener('click', (e) => {
+      console.log(e.target);
+    });
   },
 };
 

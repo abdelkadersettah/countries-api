@@ -20,6 +20,7 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: var(--margin-medium);
+
     &--detail {
       width: 100%;
       display: block;
@@ -27,8 +28,7 @@
   }
   &__list {
     //margin-bottom: var(--margin-medium);
-    border-radius: 0.4em;
-    overflow: hidden;
+
     &--detail {
       border-radius: 0;
       overflow: visible;
