@@ -120,9 +120,10 @@ const UI = {
   renderCountryDetail: function (countries, clickedCountry) {
     // get countries array and filter
     // to get clicked one
-    clickedCountry = countries.filter(
-      (country) => country.name == clickedCountry
+    clickedCountry = countries.filter((country) =>
+      country.name.includes(clickedCountry)
     );
+    console.log(clickedCountry);
     // get array element of index 0
     clickedCountry = clickedCountry[0];
     let html = '';

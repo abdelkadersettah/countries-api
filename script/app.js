@@ -53,7 +53,14 @@ const App = {
     // for borders clicks
     let detailSection = document.getElementById('detail');
     detailSection.addEventListener('click', (e) => {
-      console.log(e.target);
+      let clickedBorder = e.target;
+      if (clickedBorder.classList.contains('card-footer__item')) {
+        console.log(
+          clickedBorder.textContent,
+          countriesData.api[107].name.includes(clickedBorder.textContent)
+        );
+        ui.renderCountryDetail(countriesData.api, clickedBorder.textContent);
+      }
     });
   },
 };
