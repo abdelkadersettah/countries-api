@@ -1,12 +1,6 @@
 const Data = {
   url: 'https://restcountries.eu/rest/v2/all',
   api: null,
-  init: function () {
-    return {
-      url: 'kader.com',
-      api: null,
-    };
-  },
   getData: async function (url) {
     // get countries Data API using XMLHttpRequest
     return new Promise((resolve, reject) => {

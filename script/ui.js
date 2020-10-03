@@ -1,30 +1,27 @@
 // object for country detail
 const UI = {
-  // assign property for pages and cards and back button element
-  pages: document.querySelectorAll('.page'),
-  backBtn: document.querySelector('.btn__back'),
-  searchInput: document.querySelector('.search__input'),
-  // countryDetail using it for hash name
-  countryDetail: '',
-  // cards container
-  cardsContainer: document.querySelector('.cards-container__items'),
-  cardsContainerDetail: document.querySelector(
-    '.cards-container__items--detail'
-  ),
-  // get drop down element
-  dropDownLink: document.querySelectorAll('.dropdown__link'),
-  dropDownMenu: document.querySelector('.dropdown__menu'),
-  detailSection: document.getElementById('detail'),
-  homeSection: document.getElementById('home'),
-  // get body element
-  body: document.querySelector('.body'),
-  // get dark button element
-  darkBtn: document.querySelector('.btn__dark'),
-  // initialization function responsible for fire all event handler
   init: function () {
-    // add home hash for page location when the home page load
-    // add event to cards when user click
-    // on card the detail page open
+    // assign property for pages and cards and back button element
+    this.pages = document.querySelectorAll('.page');
+    this.backBtn = document.querySelector('.btn__back');
+    this.searchInput = document.querySelector('.search__input');
+    // countryDetail using it for hash name
+    this.countryDetail = '';
+    // cards container
+    this.cardsContainer = document.querySelector('.cards-container__items');
+    this.cardsContainerDetail = document.querySelector(
+      '.cards-container__items--detail'
+    );
+    // get drop down element
+    this.dropDownLink = document.querySelectorAll('.dropdown__link');
+    this.dropDownMenu = document.querySelector('.dropdown__menu');
+    this.detailSection = document.getElementById('detail');
+    this.homeSection = document.getElementById('home');
+    // get body element
+    this.body = document.querySelector('.body');
+    // get dark button element
+    this.darkBtn = document.querySelector('.btn__dark');
+    // initialization function responsible for fire all event handler
   },
   nav: function (selectedCountry) {
     let linkHash = location.hash.substr(1);
@@ -44,6 +41,7 @@ const UI = {
   },
   // callback function for back button
   backHome: function (e) {
+    this.init.call(this);
     e.preventDefault();
     history.pushState({}, 'home', '#home');
     this.pages.forEach((page) => page.classList.toggle('page--active'));
@@ -51,6 +49,7 @@ const UI = {
   // callback function for back and
   // previous button on user browser
   poppIn: function (countries) {
+    this.init.call(this);
     // get name of selected country from url hash name
     let pageHash = location.hash.substr(1);
     // if page is not on home
@@ -70,11 +69,13 @@ const UI = {
   },
   //  object for dark-mode
   darkMode: function () {
+    this.init.call(this);
     // event handler function
     //e.preventDefault();
     this.body.classList.toggle('body--dark');
   },
   renderCountries: function (data) {
+    this.init.call(this);
     let html = '';
     this.cardsContainer.innerHTML = '';
     data.forEach((country) => {
@@ -110,6 +111,7 @@ const UI = {
     history.pushState({}, 'home', '#home');
   },
   renderCountryDetail: function (countries, clickedCountry) {
+    this.init.call(this);
     // get countries array and filter
     // to get clicked one
     this.nav(clickedCountry);
@@ -205,6 +207,7 @@ const UI = {
   },
   // function responsable for search a country
   searchForCountry: function (countries, searchText) {
+    this.init.call(this);
     // remove empty space on text input
     searchText = searchText.trim();
     // check if search input empty nothing happen
@@ -221,6 +224,7 @@ const UI = {
     }
   },
   filterByRegion: function (selectedRegion, countriesData) {
+    this.init.call(this);
     //first we will check if no region was selected
     // we will render all countries
     selectedRegion.classList.toggle('dropdown__link--active');
@@ -248,6 +252,8 @@ const UI = {
     }
   },
   getClickedBorder: function (countries, clickedBorder) {
+    this.init.call(this);
+
     // this function responsible for rendering
     // the clicked border
     // countries are data api for all countries

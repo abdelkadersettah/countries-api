@@ -1,6 +1,7 @@
 const App = {
   init: function () {
     const ui = Object.create(UI);
+    ui.init();
     let countriesData = Object.create(Data);
     countriesData
       .getData(countriesData.url)
