@@ -12,6 +12,19 @@ const App = {
         ui.init();
       })
       .catch((err) => console.log(err));
+    // add event to back button
+    // when the user click it back to home page
+    ui.backBtn.addEventListener('click', (e) => {
+      ui.backHome(e);
+    });
+    // add event to window object
+    // when user click on back or previous
+    // button on browser
+
+    // add and remove dark mode
+    ui.darkBtn.addEventListener('click', () => {
+      ui.darkMode();
+    });
     // event handler for detail section
     ui.cardsContainer.addEventListener('click', (e) => {
       e.preventDefault();
@@ -45,14 +58,20 @@ const App = {
     ui.dropDownMenu.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.className.includes('dropdown__link')) {
-        //console.log(e.target);
         ui.filterByRegion(e.target, countriesData.api);
       }
     });
     // for borders clicks
     ui.detailSection.addEventListener('click', (e) => {
+      // it will get the name of country border clicked
+      // by users
       let clickedBorder = e.target;
+      // call the getClickedBorder function
       ui.getClickedBorder(countriesData.api, clickedBorder);
+    });
+    // this event for back and forward of browser
+    window.addEventListener('popstate', (e) => {
+      ui.poppIn(countriesData.api);
     });
   },
 };
