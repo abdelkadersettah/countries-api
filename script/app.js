@@ -23,7 +23,6 @@ const App = {
         elementClass = elementClass.parentElement;
       }
       if (elementClass.className.includes('card')) {
-        ui.nav(elementClass);
       }
       // get name of clicked country
       let clickedCountry = elementClass.getAttribute('data-target');
@@ -51,16 +50,9 @@ const App = {
       }
     });
     // for borders clicks
-    let detailSection = document.getElementById('detail');
-    detailSection.addEventListener('click', (e) => {
+    ui.detailSection.addEventListener('click', (e) => {
       let clickedBorder = e.target;
-      if (clickedBorder.classList.contains('card-footer__item')) {
-        console.log(
-          clickedBorder.textContent,
-          countriesData.api[107].name.includes(clickedBorder.textContent)
-        );
-        ui.renderCountryDetail(countriesData.api, clickedBorder.textContent);
-      }
+      ui.getClickedBorder(countriesData.api, clickedBorder);
     });
   },
 };

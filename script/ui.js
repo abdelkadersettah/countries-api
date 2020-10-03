@@ -11,9 +11,10 @@ const UI = {
   cardsContainerDetail: document.querySelector(
     '.cards-container__items--detail'
   ),
+  // get drop down element
   dropDownLink: document.querySelectorAll('.dropdown__link'),
   dropDownMenu: document.querySelector('.dropdown__menu'),
-
+  detailSection: document.getElementById('detail'),
   // get body element
   body: document.querySelector('.body'),
   // get dark button element
@@ -39,21 +40,23 @@ const UI = {
     // add and remove dark mode
     this.darkBtn.addEventListener('click', this.darkMode.bind(this));
   },
-  nav: function (elementClass) {
-    const detailPage = document.getElementById('detail');
-    if (detailPage.classList.contains('page--active')) {
-      return;
-    } else {
-      // get class for clicked card;
-      // loop on clicked element to get
-      // parent attribute DATA-target
-      // to get country name
-
-      let hash = elementClass.getAttribute('data-target');
+  nav: function (selectedCountry) {
+    console.log('elementclass from nav', selectedCountry, location.hash);
+    let linkHash = location.hash.replace('#', '');
+    if (!this.detailSection.classList.contains('page--active')) {
+      let hash = selectedCountry;
       // push hasn name on page link
       history.pushState({}, `${hash}`, `#${hash}`);
       this.pages.forEach((page) => page.classList.toggle('page--active'));
       this.countryDetail = hash;
+    } else if (linkHash !== selectedCountry) {
+      history.pushState({}, `${selectedCountry}`, `#${selectedCountry}`);
+
+      console.log(linkHash, selectedCountry);
+      // get class for clicked card;
+      // loop on clicked element to get
+      // parent attribute DATA-target
+      // to get country name
     }
   },
   // callback function for back button
@@ -120,10 +123,11 @@ const UI = {
   renderCountryDetail: function (countries, clickedCountry) {
     // get countries array and filter
     // to get clicked one
+    console.log(clickedCountry);
+    this.nav(clickedCountry);
     clickedCountry = countries.filter((country) =>
       country.name.includes(clickedCountry)
     );
-    console.log(clickedCountry);
     // get array element of index 0
     clickedCountry = clickedCountry[0];
     let html = '';
@@ -249,6 +253,11 @@ const UI = {
         (country) => country.region === selectedRegion.textContent
       );
       this.renderCountries(result);
+    }
+  },
+  getClickedBorder: function (countries, clickedBorder) {
+    if (clickedBorder.classList.contains('card-footer__item')) {
+      this.renderCountryDetail(countries, clickedBorder.textContent);
     }
   },
 };
