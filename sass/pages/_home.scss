@@ -6,6 +6,9 @@
   background-color: var(--background-primary);
   z-index: 100;
   position: relative;
+  & > .title-primary {
+    cursor: pointer;
+  }
 }
 .main {
   padding: var(--padding-large) var(--page-padding);

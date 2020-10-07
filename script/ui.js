@@ -1,11 +1,21 @@
 // object for country detail
-const UI = {
-  init: Symbol(),
-  [this.init]: function () {
+const init = Symbol();
+const nav = Symbol();
+const backHome = Symbol();
+const poppIn = Symbol();
+const darkMode = Symbol();
+const renderCountries = Symbol();
+const renderCountryDetail = Symbol();
+const searchForCountry = Symbol();
+const filterByRegion = Symbol();
+const getClickedBorder = Symbol();
+const Ui = {
+  [init]: function () {
     // assign property for pages and cards and back button element
     this.pages = document.querySelectorAll('.page');
     this.backBtn = document.querySelector('.btn__back');
     this.searchInput = document.querySelector('.search__input');
+    this.homePageTitle = document.querySelector('.header>.title-primary');
     // countryDetail using it for hash name
     this.countryDetail = '';
     // cards container
@@ -24,7 +34,7 @@ const UI = {
     this.darkBtn = document.querySelector('.btn__dark');
     // initialization function responsible for fire all event handler
   },
-  nav: function (selectedCountry) {
+  [nav]: function (selectedCountry) {
     let linkHash = location.hash.substr(1);
     if (!this.detailSection.classList.contains('page--active')) {
       let hash = selectedCountry;
@@ -41,16 +51,16 @@ const UI = {
     }
   },
   // callback function for back button
-  backHome: function (e) {
-    this[this.init];
+  [backHome]: function (e) {
+    this[init];
     e.preventDefault();
     history.pushState({}, 'home', '#home');
     this.pages.forEach((page) => page.classList.toggle('page--active'));
   },
   // callback function for back and
   // previous button on user browser
-  poppIn: function (countries) {
-    this[this.init];
+  [poppIn]: function (countries) {
+    this[init];
     // get name of selected country from url hash name
     let pageHash = location.hash.substr(1);
     // if page is not on home
@@ -59,24 +69,24 @@ const UI = {
       // get countrie APi
       this.detailSection.classList.add('page--active');
       this.homeSection.classList.remove('page--active');
-      this.renderCountryDetail(countries, pageHash);
+      this[renderCountryDetail](countries, pageHash);
     } else {
       // if users are on home page
       // all countries will be render
       this.detailSection.classList.remove('page--active');
       this.homeSection.classList.add('page--active');
-      this.renderCountries(countries);
+      this[renderCountries](countries);
     }
   },
   //  object for dark-mode
-  darkMode: function () {
-    this[this.init];
+  [darkMode]: function () {
+    this[init];
     // event handler function
     //e.preventDefault();
     this.body.classList.toggle('body--dark');
   },
-  renderCountries: function (data) {
-    this[this.init];
+  [renderCountries]: function (data) {
+    this[init];
     let html = '';
     this.cardsContainer.innerHTML = '';
     data.forEach((country) => {
@@ -111,11 +121,11 @@ const UI = {
     this.cardsContainer.innerHTML += html;
     history.pushState({}, 'home', '#home');
   },
-  renderCountryDetail: function (countries, clickedCountry) {
-    this[this.init];
+  [renderCountryDetail]: function (countries, clickedCountry) {
+    this[init];
     // get countries array and filter
     // to get clicked one
-    this.nav(clickedCountry);
+    this[nav](clickedCountry);
     clickedCountry = countries.filter((country) =>
       country.name.includes(clickedCountry)
     );
@@ -207,13 +217,13 @@ const UI = {
     this.cardsContainerDetail.innerHTML += html;
   },
   // function responsable for search a country
-  searchForCountry: function (countries, searchText) {
-    this[this.init];
+  [searchForCountry]: function (countries, searchText) {
+    this[init];
     // remove empty space on text input
     searchText = searchText.trim();
     // check if search input empty nothing happen
     if (!searchText) {
-      this.renderCountries(countries);
+      this[renderCountries](countries);
     } else {
       // else we filter countries array
       // and search for match
@@ -221,11 +231,11 @@ const UI = {
         country.name.toUpperCase().includes(searchText.toUpperCase())
       );
       // and after that we render the result
-      this.renderCountries(nameOfSearchedCountry);
+      this[renderCountries](nameOfSearchedCountry);
     }
   },
-  filterByRegion: function (selectedRegion, countriesData) {
-    this[this.init];
+  [filterByRegion]: function (selectedRegion, countriesData) {
+    this[init];
     //first we will check if no region was selected
     // we will render all countries
     selectedRegion.classList.toggle('dropdown__link--active');
@@ -235,7 +245,7 @@ const UI = {
         link.classList.contains('dropdown__link--active')
       ).length === 0
     ) {
-      this.renderCountries(countriesData);
+      this[renderCountries](countriesData);
     } else {
       // if the same region was clicked twice nothing happen
       this.dropDownLink.forEach((link) => {
@@ -249,11 +259,11 @@ const UI = {
       let countriesByRegion = countriesData.filter(
         (country) => country.region === selectedRegion.textContent
       );
-      this.renderCountries(countriesByRegion);
+      this[renderCountries](countriesByRegion);
     }
   },
-  getClickedBorder: function (countries, clickedBorder) {
-    this[this.init];
+  [getClickedBorder]: function (countries, clickedBorder) {
+    this[init];
 
     // this function responsible for rendering
     // the clicked border
@@ -261,7 +271,7 @@ const UI = {
     // clickedBorder it event target to get the
     // textcontent of element (name of country)
     if (clickedBorder.classList.contains('card-footer__item')) {
-      this.renderCountryDetail(countries, clickedBorder.textContent);
+      this[renderCountryDetail](countries, clickedBorder.textContent);
     }
   },
 };

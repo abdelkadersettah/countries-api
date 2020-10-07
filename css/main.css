@@ -89,6 +89,10 @@ h3 {
   position: relative;
 }
 
+.header > .title-primary {
+  cursor: pointer;
+}
+
 .main {
   padding: var(--padding-large) var(--page-padding);
   padding-top: var(--padding-medium);

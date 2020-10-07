@@ -1,14 +1,15 @@
+const start = Symbol();
 const App = {
-  start: function () {
-    const ui = Object.create(UI);
-    ui[this.init]();
+  [start]: function () {
+    const ui = Object.create(Ui);
+    ui[init]();
     //ui[init]();
     let countriesData = Object.create(Data);
     countriesData
       .getData(countriesData.url)
       .then((data) => {
         countriesData.api = JSON.parse(data);
-        ui.renderCountries(countriesData.api);
+        ui[renderCountries](countriesData.api);
       })
       .then(() => {
         //  ui[init]();
@@ -17,7 +18,12 @@ const App = {
     // add event to back button
     // when the user click it back to home page
     ui.backBtn.addEventListener('click', (e) => {
-      ui.backHome(e);
+      ui[backHome](e);
+    });
+    ui.homePageTitle.addEventListener('click', (e) => {
+      // ui[renderCountries](countriesData.api);
+      ui.detailSection.classList.remove('page--active');
+      ui.homeSection.classList.add('page--active');
     });
     // add event to window object
     // when user click on back or previous
@@ -25,7 +31,7 @@ const App = {
 
     // add and remove dark mode
     ui.darkBtn.addEventListener('click', () => {
-      ui.darkMode();
+      ui[darkMode]();
     });
     // event handler for detail section
     ui.cardsContainer.addEventListener('click', (e) => {
@@ -43,7 +49,7 @@ const App = {
       let clickedCountry = elementClass.getAttribute('data-target');
       // render the detail of country
       // on detail section
-      ui.renderCountryDetail(countriesData.api, clickedCountry);
+      ui[renderCountryDetail](countriesData.api, clickedCountry);
       if (location.hash !== '#home') {
       }
     });
@@ -54,13 +60,13 @@ const App = {
       // get search text
       let text = ui.searchInput.value;
       // call searchForCountry to render result
-      ui.searchForCountry(countriesData.api, text);
+      ui[searchForCountry](countriesData.api, text);
     });
 
     ui.dropDownMenu.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.className.includes('dropdown__link')) {
-        ui.filterByRegion(e.target, countriesData.api);
+        ui[filterByRegion](e.target, countriesData.api);
       }
     });
     // for borders clicks
@@ -69,14 +75,14 @@ const App = {
       // by users
       let clickedBorder = e.target;
       // call the getClickedBorder function
-      ui.getClickedBorder(countriesData.api, clickedBorder);
+      ui[getClickedBorder](countriesData.api, clickedBorder);
     });
     // this event for back and forward of browser
     window.addEventListener('popstate', (e) => {
-      ui.poppIn(countriesData.api);
+      ui[poppIn](countriesData.api);
     });
   },
 };
 
 const countriesApp = Object.create(App);
-countriesApp.start();
+countriesApp[start]();
