@@ -1,7 +1,8 @@
 const App = {
-  init: function () {
+  start: function () {
     const ui = Object.create(UI);
-    ui.init();
+    ui[this.init]();
+    //ui[init]();
     let countriesData = Object.create(Data);
     countriesData
       .getData(countriesData.url)
@@ -10,7 +11,7 @@ const App = {
         ui.renderCountries(countriesData.api);
       })
       .then(() => {
-        ui.init();
+        //  ui[init]();
       })
       .catch((err) => console.log(err));
     // add event to back button
@@ -78,4 +79,4 @@ const App = {
 };
 
 const countriesApp = Object.create(App);
-countriesApp.init();
+countriesApp.start();

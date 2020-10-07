@@ -1,6 +1,7 @@
 // object for country detail
 const UI = {
-  init: function () {
+  init: Symbol(),
+  [this.init]: function () {
     // assign property for pages and cards and back button element
     this.pages = document.querySelectorAll('.page');
     this.backBtn = document.querySelector('.btn__back');
@@ -41,7 +42,7 @@ const UI = {
   },
   // callback function for back button
   backHome: function (e) {
-    this.init.call(this);
+    this[this.init];
     e.preventDefault();
     history.pushState({}, 'home', '#home');
     this.pages.forEach((page) => page.classList.toggle('page--active'));
@@ -49,7 +50,7 @@ const UI = {
   // callback function for back and
   // previous button on user browser
   poppIn: function (countries) {
-    this.init.call(this);
+    this[this.init];
     // get name of selected country from url hash name
     let pageHash = location.hash.substr(1);
     // if page is not on home
@@ -69,13 +70,13 @@ const UI = {
   },
   //  object for dark-mode
   darkMode: function () {
-    this.init.call(this);
+    this[this.init];
     // event handler function
     //e.preventDefault();
     this.body.classList.toggle('body--dark');
   },
   renderCountries: function (data) {
-    this.init.call(this);
+    this[this.init];
     let html = '';
     this.cardsContainer.innerHTML = '';
     data.forEach((country) => {
@@ -111,7 +112,7 @@ const UI = {
     history.pushState({}, 'home', '#home');
   },
   renderCountryDetail: function (countries, clickedCountry) {
-    this.init.call(this);
+    this[this.init];
     // get countries array and filter
     // to get clicked one
     this.nav(clickedCountry);
@@ -207,12 +208,12 @@ const UI = {
   },
   // function responsable for search a country
   searchForCountry: function (countries, searchText) {
-    this.init.call(this);
+    this[this.init];
     // remove empty space on text input
     searchText = searchText.trim();
     // check if search input empty nothing happen
     if (!searchText) {
-      return;
+      this.renderCountries(countries);
     } else {
       // else we filter countries array
       // and search for match
@@ -224,7 +225,7 @@ const UI = {
     }
   },
   filterByRegion: function (selectedRegion, countriesData) {
-    this.init.call(this);
+    this[this.init];
     //first we will check if no region was selected
     // we will render all countries
     selectedRegion.classList.toggle('dropdown__link--active');
@@ -252,7 +253,7 @@ const UI = {
     }
   },
   getClickedBorder: function (countries, clickedBorder) {
-    this.init.call(this);
+    this[this.init];
 
     // this function responsible for rendering
     // the clicked border
