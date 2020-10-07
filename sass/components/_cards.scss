@@ -48,10 +48,14 @@
     display: flex;
     flex-direction: column;
     &__content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
+      // display: flex;
+      // flex-wrap: wrap;
+      // justify-content: space-around;
       grid-gap: var(--margin-small);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+      grid-auto-rows: auto;
+      padding: 0 0.2em;
     }
     &__item {
       cursor: pointer;
