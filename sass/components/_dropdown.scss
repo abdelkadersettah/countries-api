@@ -6,6 +6,12 @@
   position: relative;
   // add padding bottom to increase hitting area::
   padding-bottom: var(--padding-small);
+  @include respond(tab-port) {
+    margin: 0;
+    // to center the element in the middle
+    margin-top: var(--padding-small);
+    width: 30%;
+  }
 
   &:hover .dropdown__menu {
     display: block;

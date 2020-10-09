@@ -4,7 +4,7 @@
   &__figure {
     height: 12em;
     &--detail {
-      height: 15em;
+      height: 17em;
     }
   }
   &__image {
@@ -27,6 +27,7 @@
     margin-bottom: var(--margin-small);
   }
   &__detail {
+    font-size: inherit;
     &--first,
     &--second {
       & > *:not(:last-child) {
@@ -38,7 +39,7 @@
     }
   }
   &__subtitle {
-    font-weight: var(--semi-bold);
+    font-weight: var(--extra-bold);
     display: inline-block;
     &--content {
       font-weight: var(--light-weight);
@@ -48,9 +49,6 @@
     display: flex;
     flex-direction: column;
     &__content {
-      // display: flex;
-      // flex-wrap: wrap;
-      // justify-content: space-around;
       grid-gap: var(--margin-small);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));

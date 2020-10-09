@@ -15,12 +15,19 @@
   padding-top: var(--padding-medium);
   background-color: var(--background-secondary);
 }
+.input {
+  @include respond(tab-port) {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--margin-medium);
+  }
+}
 .cards-container {
   &__items {
-    width: 85%;
+    //max-width: 85%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: var(--margin-medium);
 
@@ -30,7 +37,7 @@
     }
   }
   &__list {
-    //margin-bottom: var(--margin-medium);
+    justify-self: center;
 
     &--detail {
       border-radius: 0;

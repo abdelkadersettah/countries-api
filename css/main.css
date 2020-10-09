@@ -1,3 +1,17 @@
+/* 0-700px phone
+  700 - 900px tablet portrait
+  900 - 1200 px tablet landscape
+  1200 - 1800 px desktop
+  1080 +++  big desktop
+
+ORDER : base + typography > general layout + grid > page layout > components
+
+$breakpoint argument choices:
+-phone
+-tab-port
+-tab-land
+-big-desktop
+*/
 :root {
   --dark-blue: hsl(209, 23%, 22%);
   --very-dark-blue-1: hsl(207, 26%, 17%);
@@ -99,11 +113,18 @@ h3 {
   background-color: var(--background-secondary);
 }
 
+@media only screen and (min-width: 43.75em) {
+  .input {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--margin-medium);
+  }
+}
+
 .cards-container__items {
-  width: 85%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
   grid-auto-rows: 1fr;
   grid-gap: var(--margin-medium);
 }
@@ -111,6 +132,10 @@ h3 {
 .cards-container__items--detail {
   width: 100%;
   display: block;
+}
+
+.cards-container__list {
+  justify-self: center;
 }
 
 .cards-container__list--detail {
@@ -124,6 +149,7 @@ h3 {
 
 .page__detail {
   margin-top: var(--margin-small);
+  font-size: var(--font-size-secondary);
 }
 
 .page--active {
@@ -157,6 +183,13 @@ h3 {
   color: inherit;
   border-radius: 0.4em;
   box-shadow: 0px 0em 0.5em var(--shadow-color-primary);
+}
+
+@media only screen and (min-width: 43.75em) {
+  .search {
+    width: 70%;
+    margin-right: var(--margin-small);
+  }
 }
 
 .search__icon {
@@ -198,6 +231,14 @@ h3 {
   width: 60%;
   position: relative;
   padding-bottom: var(--padding-small);
+}
+
+@media only screen and (min-width: 43.75em) {
+  .dropdown {
+    margin: 0;
+    margin-top: var(--padding-small);
+    width: 30%;
+  }
 }
 
 .dropdown:hover .dropdown__menu {
@@ -274,7 +315,7 @@ h3 {
 }
 
 .card__figure--detail {
-  height: 15em;
+  height: 17em;
 }
 
 .card__image {
@@ -300,6 +341,10 @@ h3 {
   margin-bottom: var(--margin-small);
 }
 
+.card__detail {
+  font-size: inherit;
+}
+
 .card__detail--first > *:not(:last-child), .card__detail--second > *:not(:last-child) {
   margin-bottom: calc(var(--margin-small) / 2);
 }
@@ -309,7 +354,7 @@ h3 {
 }
 
 .card__subtitle {
-  font-weight: var(--semi-bold);
+  font-weight: var(--extra-bold);
   display: inline-block;
 }
 
