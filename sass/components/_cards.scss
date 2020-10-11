@@ -4,7 +4,8 @@
   &__figure {
     height: 12em;
     &--detail {
-      height: 17em;
+      height: 40vh;
+      max-width: 31.25em;
     }
   }
   &__image {
@@ -39,7 +40,7 @@
     }
   }
   &__subtitle {
-    font-weight: var(--extra-bold);
+    font-weight: var(--semi-bold);
     display: inline-block;
     &--content {
       font-weight: var(--light-weight);
