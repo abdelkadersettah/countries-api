@@ -136,7 +136,7 @@ const Ui = {
     this.cardsContainerDetail.innerHTML = '';
     html += `
     <li class="cards-container__list cards-container__list--detail">
-  <div href="" class="card" data-target="${clickedCountry.name}">
+  <div href="" class="card card--detail" data-target="${clickedCountry.name}">
         <figure class="card__figure card__figure--detail">
             <img src="${clickedCountry.flag}" alt="${
       clickedCountry.name
