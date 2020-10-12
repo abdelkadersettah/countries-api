@@ -34,6 +34,12 @@
   }
   &__detail {
     font-size: inherit;
+    &--detail {
+      @include respond(tab-land) {
+        display: flex;
+        gap: var(--page-padding);
+      }
+    }
     &--first,
     &--second {
       & > *:not(:last-child) {
@@ -42,6 +48,10 @@
     }
     &--second {
       margin: var(--margin-medium) 0;
+      @include respond(tab-land) {
+        margin: 0;
+        align-self: flex-start;
+      }
     }
   }
   &__subtitle {
@@ -54,6 +64,12 @@
   &-footer {
     display: flex;
     flex-direction: column;
+    @include respond(tab-land) {
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--page-padding);
+      margin-top: var(--margin-medium);
+    }
     &__content {
       display: flex;
       flex-wrap: wrap;

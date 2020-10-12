@@ -351,12 +351,26 @@ h3 {
   font-size: inherit;
 }
 
+@media only screen and (min-width: 56.25em) {
+  .card__detail--detail {
+    display: flex;
+    gap: var(--page-padding);
+  }
+}
+
 .card__detail--first > *:not(:last-child), .card__detail--second > *:not(:last-child) {
   margin-bottom: calc(var(--margin-small) / 2);
 }
 
 .card__detail--second {
   margin: var(--margin-medium) 0;
+}
+
+@media only screen and (min-width: 56.25em) {
+  .card__detail--second {
+    margin: 0;
+    align-self: flex-start;
+  }
 }
 
 .card__subtitle {
@@ -371,6 +385,15 @@ h3 {
 .card-footer {
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (min-width: 56.25em) {
+  .card-footer {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--page-padding);
+    margin-top: var(--margin-medium);
+  }
 }
 
 .card-footer__content {

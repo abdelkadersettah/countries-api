@@ -144,7 +144,7 @@ const Ui = {
           </figure>
           <div class="card__body card__body--detail">
             <h2 class="card__title">${clickedCountry.name} </h2>
-            <ul class="card__detail">
+            <ul class="card__detail card__detail--detail">
               <ul class="card__detail--first">
                 <li><h3 class="card__subtitle">Native Name: <span class="card__subtitle--content">${
                   clickedCountry.nativeName
