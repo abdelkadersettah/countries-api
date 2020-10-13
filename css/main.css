@@ -163,7 +163,7 @@ h3 {
 
 .page {
   display: none;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 @media only screen and (min-width: 76.25em) {
