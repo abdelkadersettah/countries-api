@@ -1,13 +1,21 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--padding-medium) var(--page-padding);
-  box-shadow: 0px -0.15em 0.5em var(--shadow-color-primary);
   background-color: var(--background-primary);
-  z-index: 100;
-  position: relative;
-  & > .title-primary {
-    cursor: pointer;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0em 0.4em 0.4em -0.4em var(--shadow-color-primary);
+    padding: var(--padding-medium) var(--page-padding);
+    z-index: 100;
+    position: relative;
+    & > .title-primary {
+      cursor: pointer;
+    }
+    @include respond(desktop) {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--padding-medium) 0;
+    }
   }
 }
 .main {
@@ -15,6 +23,7 @@
   padding-top: var(--padding-medium);
   background-color: var(--background-secondary);
 }
+
 .input {
   @include respond(tab-port) {
     display: flex;
@@ -31,6 +40,9 @@
     grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: var(--page-padding);
+    @include respond(desktop) {
+      grid-gap: var(--padding-large);
+    }
 
     &--detail {
       width: 100%;

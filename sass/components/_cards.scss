@@ -2,15 +2,27 @@
   border-radius: 0.4em;
   overflow: hidden;
   max-width: 16em;
+  @include respond(desktop) {
+    max-width: none;
+  }
   &--detail {
     max-width: 100%;
+    @include respond(desktop) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__figure {
     height: 12em;
+
     &--detail {
       height: 40vh;
       max-width: 31.25em;
+      @include respond(desktop) {
+        height: 60vh;
+      }
     }
   }
   &__image {
@@ -26,6 +38,9 @@
       background-color: var(--background-secondary);
       padding-left: 0;
       padding-right: 0;
+      @include respond(desktop) {
+        width: 50%;
+      }
     }
   }
   &__title {

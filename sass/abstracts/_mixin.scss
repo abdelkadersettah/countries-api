@@ -27,14 +27,8 @@ $breakpoint argument choices:
     }
   }
   @if $breakpoint == desktop {
-    @media only screen and (min-width: 62.5em) {
-      //1000px
-      @content;
-    }
-  }
-  @if $breakpoint == big-desktop {
-    @media only screen and (min-width: 90em) {
-      //1440px
+    @media only screen and (min-width: 76.25em) {
+      //1220
       @content;
     }
   }

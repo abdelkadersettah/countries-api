@@ -15,7 +15,7 @@ const Ui = {
     this.pages = document.querySelectorAll('.page');
     this.backBtn = document.querySelector('.btn__back');
     this.searchInput = document.querySelector('.search__input');
-    this.homePageTitle = document.querySelector('.header>.title-primary');
+    this.homePageTitle = document.querySelector('.header__nav>.title-primary');
     // countryDetail using it for hash name
     this.countryDetail = '';
     // cards container
