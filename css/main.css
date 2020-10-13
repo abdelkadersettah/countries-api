@@ -163,6 +163,7 @@ h3 {
 
 .page {
   display: none;
+  height: 100vh;
 }
 
 @media only screen and (min-width: 76.25em) {
@@ -236,12 +237,6 @@ h3 {
   border: none;
   z-index: 0;
   padding: var(--padding-small) var(--padding-x-large);
-}
-
-@media only screen and (min-width: 43.75em) {
-  .search__input {
-    padding-right: 10em;
-  }
 }
 
 .search__input::placeholder {
@@ -339,12 +334,6 @@ h3 {
   border-radius: 0.4em;
   overflow: hidden;
   max-width: 16em;
-}
-
-@media only screen and (min-width: 76.25em) {
-  .card {
-    max-width: none;
-  }
 }
 
 .card--detail {

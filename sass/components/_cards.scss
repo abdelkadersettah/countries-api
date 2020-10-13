@@ -2,9 +2,9 @@
   border-radius: 0.4em;
   overflow: hidden;
   max-width: 16em;
-  @include respond(desktop) {
-    max-width: none;
-  }
+  // @include respond(desktop) {
+  //   max-width: none;
+  // }
   &--detail {
     max-width: 100%;
     @include respond(desktop) {
