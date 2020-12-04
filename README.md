@@ -21,13 +21,13 @@ users are able to:
 - Click on a country to see more detailed information on a separate page
 - Click through to the border countries on the detail page
 - Toggle the color scheme between light and dark mode.
-  check out this page at [Countries-API](https://setaek.github.io/countries-api/)
+  check out this page at [Countries-API](https://abdelkadersettah.github.io/countries-api/)
 
 ## Quick start
 
 Several quick start options are available:
 
-- Clone the repo: `git clone https://github.com/setaek/countries-api.git`.
+- Clone the repo: `git clone https://github.com/abdelkadersettah/countries-api.git`.
 
 ## What's included
 
@@ -66,4 +66,4 @@ Easybank-landing-page/
 
 ## Copyright
 
-Copyright (c) 2020 design a credit to the original author frontendmentor coded by [abdelkader settah](https://github.com/setaek)
+Copyright (c) 2020 design a credit to the original author frontendmentor coded by [abdelkader settah](https://github.com/abdelkadersettah)
