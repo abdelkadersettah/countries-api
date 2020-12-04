@@ -1,6 +1,6 @@
 # Countries-API page
 
-Countries-API is page designed by frontendmentor and coded by [abdelkader settah](https://github.com/setaek). Get information about countries via a [REST Countries API](https://restcountries.eu)
+Countries-API is page designed by frontendmentor and coded by [abdelkader settah](https://github.com/abdelkadersettah). Get information about countries via a [REST Countries API](https://restcountries.eu)
 
 ## Table of Contents
 
