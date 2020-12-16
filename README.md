@@ -35,7 +35,7 @@ Several quick start options are available:
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
 ```text
-Easybank-landing-page/
+Countries-API/
 ├── css/
 │ ├── main.css
 │ └── main.css.map
