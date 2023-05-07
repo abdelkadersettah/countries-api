@@ -1,5 +1,5 @@
 const Data = {
-  url: 'https://restcountries.eu/rest/v2/all',
+  url: 'https://restcountries.com/v3.1/all',
   api: null,
   getData: async function (url) {
     // get countries Data API using XMLHttpRequest

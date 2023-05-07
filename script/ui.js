@@ -92,14 +92,14 @@ const Ui = {
     data.forEach((country) => {
       html += `
       <li class="cards-container__list">
-    <a href="" class="card" data-target="${country.name}">
+    <a href="" class="card" data-target="${country.name.common}">
                         <figure class="card__figure">
-                            <img src="${country.flag}" alt="${
+                            <img src="${country?.flags.png}" alt="${
         country.flag
       } flag" class="card__image">
                           </figure>
                           <div class="card__body">
-                            <h2 class="card__title">${country.name}</h2>
+                            <h2 class="card__title">${country.name.common}</h2>
                             <ul class="card__detail">
                               <li><h3 class="card__subtitle">Population: <span class="card__subtitle--content">${new Intl.NumberFormat(
                                 'de-DE'
@@ -127,7 +127,7 @@ const Ui = {
     // to get clicked one
     this[nav](clickedCountry);
     clickedCountry = countries.filter((country) =>
-      country.name.includes(clickedCountry)
+      country.name.common.includes(clickedCountry)
     );
     // get array element of index 0
     clickedCountry = clickedCountry[0];
@@ -138,17 +138,19 @@ const Ui = {
     <li class="cards-container__list cards-container__list--detail">
   <div href="" class="card card--detail" data-target="${clickedCountry.name}">
         <figure class="card__figure card__figure--detail">
-            <img src="${clickedCountry.flag}" alt="${
-      clickedCountry.name
+            <img src="${clickedCountry.flags.png}" alt="${
+      clickedCountry.name.common
     } flag" class="card__image">
           </figure>
           <div class="card__body card__body--detail">
-            <h2 class="card__title">${clickedCountry.name} </h2>
+            <h2 class="card__title">${clickedCountry.name.common} </h2>
             <ul class="card__detail card__detail--detail">
               <ul class="card__detail--first">
-                <li><h3 class="card__subtitle">Native Name: <span class="card__subtitle--content">${
-                  clickedCountry.nativeName
-                }</span></h3></li>
+                <li><h3 class="card__subtitle">Native Name: <span class="card__subtitle--content">${Object.keys(
+                  clickedCountry.name.nativeName
+                )
+                  .map((n) => clickedCountry.name.nativeName[n].common)
+                  .join(' ')}</span></h3></li>
               <li><h3 class="card__subtitle">Population: <span class="card__subtitle--content">${new Intl.NumberFormat(
                 'de-DE'
               ).format(clickedCountry.population)}</span></h3></li>
@@ -163,14 +165,15 @@ const Ui = {
               }</span></h3></li>
               </ul>
               <ul class="card__detail--second">
-                <li><h3 class="card__subtitle">Top Level Domain: <span class="card__subtitle--content">${
-                  clickedCountry.topLevelDomain
-                }</span></h3></li>
-              <li><h3 class="card__subtitle">Currencies: <span class="card__subtitle--content">${clickedCountry.currencies
-                .map((currency) => currency.name)
-                .join(', ')}</span></h3></li>
-              <li><h3 class="card__subtitle">Languages: <span class="card__subtitle--content">${clickedCountry.languages
-                .map((language) => language.name)
+                           <li><h3 class="card__subtitle">Currencies: <span class="card__subtitle--content">${Object.keys(
+                             clickedCountry.currencies
+                           )
+                             .map((c) => clickedCountry.currencies[c].name)
+                             .join(', ')}</span></h3></li>
+              <li><h3 class="card__subtitle">Languages: <span class="card__subtitle--content">${Object.keys(
+                clickedCountry.languages
+              )
+                .map((l) => clickedCountry.languages[l])
                 .join(', ')}</span></h3></li>
               </ul>
                  </ul>
@@ -191,13 +194,11 @@ const Ui = {
                   // and filter all countries by alpha code
                   // to get there name
                   bordersArray.forEach((elem) => {
-                    result.push(
-                      ...countries.filter((a) => a.alpha3Code === elem)
-                    );
+                    result.push(...countries.filter((a) => a.cca3 === elem));
                   });
                   // push result in result array and render it on html
                   result
-                    .map((country) => country.name)
+                    .map((country) => country.name.common)
                     .forEach((country) => {
                       html += `<li class="card-footer__item btn" >${country
                         .split('(')[0]
@@ -228,7 +229,7 @@ const Ui = {
       // else we filter countries array
       // and search for match
       let nameOfSearchedCountry = countries.filter((country) =>
-        country.name.toUpperCase().includes(searchText.toUpperCase())
+        country.name.common.toUpperCase().includes(searchText.toUpperCase())
       );
       // and after that we render the result
       this[renderCountries](nameOfSearchedCountry);
