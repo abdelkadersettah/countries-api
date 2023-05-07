@@ -22,7 +22,7 @@ users are able to:
 - Click through to the border countries on the detail page
 - Toggle the color scheme between light and dark mode.
 
-  check out this page at [Countries-API](https://abdelkadersettah.github.io/countries-api/)
+  check out this page at [Countries-API](https://aboutcountries.netlify.app/)
 
 ## Quick start
 
